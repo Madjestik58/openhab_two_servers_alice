@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.4.0"
+	name="org.openhab.io.yandexalice.internal.RemoteMirrorService" activate="activate" deactivate="deactivate"
+	modified="modified" configuration-pid="org.openhab.yandexalice">
+	<service>
+		<provide interface="org.openhab.io.yandexalice.internal.RemoteMirrorService"/>
+		<provide interface="org.openhab.core.events.EventSubscriber"/>
+	</service>
+	<reference name="managedItems" interface="org.openhab.core.items.ManagedItemProvider" bind="bindManagedItems"/>
+	<reference name="itemBuilders" interface="org.openhab.core.items.ItemBuilderFactory" bind="bindItemBuilders"/>
+	<reference name="itemRegistry" interface="org.openhab.core.items.ItemRegistry" bind="bindItemRegistry"/>
+	<reference name="configurationAdmin" interface="org.osgi.service.cm.ConfigurationAdmin"
+		bind="bindConfigurationAdmin"/>
+	<reference name="eventPublisher" interface="org.openhab.core.events.EventPublisher" bind="bindEventPublisher"/>
+	<implementation class="org.openhab.io.yandexalice.internal.RemoteMirrorService"/>
+</scr:component>

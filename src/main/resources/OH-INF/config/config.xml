@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config-description:config-descriptions
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:config-description="https://openhab.org/schemas/config-description/v1.0.0"
+	xsi:schemaLocation="https://openhab.org/schemas/config-description/v1.0.0 https://openhab.org/schemas/config-description-1.0.0.xsd">
+	<config-description uri="io:yandexalice">
+		<parameter name="skillID" type="text" required="false">
+			<label>ID навыка Яндекса (необязательно)</label>
+			<description>Нужен вместе с OAuth-токеном только для обратных уведомлений о смене состояний. На сервере без Алисы
+				оставьте пустым.</description>
+			<context>password</context>
+			<advanced>true</advanced>
+		</parameter>
+		<parameter name="oauth" type="text" required="false">
+			<label>OAuth-токен Яндекса (необязательно)</label>
+			<description>Нужен вместе с ID навыка только для обратных уведомлений. На сервере без Алисы оставьте пустым.</description>
+			<context>password</context>
+			<advanced>true</advanced>
+		</parameter>
+		<parameter name="callbackDiagnostic" type="text" required="false" readOnly="true">
+			<label>Состояние обратных уведомлений</label>
+			<description>Голосовое управление работает и без этих двух дополнительных полей.</description>
+		</parameter>
+		<parameter name="remoteUrl" type="text" required="false">
+			<label>Адрес сервера без Алисы</label>
+			<description>На сервере с Алисой укажите адрес второго сервера, например http://remote-openhab.example:8080. На
+				сервере без Алисы оставьте пустым.</description>
+			<context>url</context>
+		</parameter>
+		<parameter name="bridgeDiagnostic" type="text" required="false" readOnly="true">
+			<label>Состояние моста Items</label>
+			<description>После сохранения адреса подождите проверку и обновите страницу. Сообщение укажет, что исправить при
+				ошибке.</description>
+		</parameter>
+		<parameter name="remoteToken" type="text" required="false">
+			<label>API-токен второго сервера (только при отказе REST)</label>
+			<description>Оставьте пустым, пока мост подключается без него. Если состояние сообщает об отказе REST в доступе,
+				введите API-токен второго сервера.</description>
+			<context>password</context>
+		</parameter>
+		<parameter name="eventsDiagnostic" type="text" required="false" readOnly="true">
+			<label>Состояние потока событий</label>
+			<description>Для быстрой передачи команд и состояний поток должен быть подключён.</description>
+		</parameter>
+		<parameter name="remoteTag" type="text" required="false">
+			<label>Тег исходных Items</label>
+			<default>Yandex</default>
+			<description>Назначьте этот тег исходным Items на втором сервере. Здесь менять необязательно.</description>
+			<advanced>true</advanced>
+		</parameter>
+		<parameter name="remotePrefix" type="text" required="false">
+			<label>Префикс зеркал на сервере с Алисой</label>
+			<default>alice_remote_</default>
+			<description>При обновлении работающего моста сохраните прежний префикс: от него зависят идентификаторы устройств
+				Алисы.</description>
+			<advanced>true</advanced>
+		</parameter>
+		<parameter name="remotePollSeconds" type="integer" min="5" max="3600" required="false">
+			<label>Проверка новых Items, секунд</label>
+			<default>10</default>
+			<description>Контрольная проверка и восстановление связи. Обычно менять не требуется.</description>
+			<advanced>true</advanced>
+		</parameter>
+	</config-description>
+</config-description:config-descriptions>
